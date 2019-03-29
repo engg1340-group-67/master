@@ -70,4 +70,6 @@ In-code documentation*
   3. Rewarding system
      - Parents can award their kids through this system, like giving pocket money, bonus if they finish homework or housework. 
 
-    
+## **Part 4: Limitations**
+ 1. Only standard library is allowed. Thus the system maybe not very powerful. 
+ 2. As year 1 students, we only have limited knowledge. However, we would try our best to finish it. 
