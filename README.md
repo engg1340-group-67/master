@@ -34,12 +34,11 @@ In-code documentation*
       2. transportation
       3. insurance
       4. daily neccesities
+         eg. stationery, toys
       5. grocery
-      6. salary
+      6. Pocket money
     - variable cost
-      1. Stock Market
-      2. Gambling
-      5. Bonus
+      1. Bonus
   2. Accessibility of record (delete/read)
     - A list of table showing different type of imformations per day.
     //photo here
@@ -72,5 +71,5 @@ In-code documentation*
      - Parents can award their kids through this system, like giving pocket money, bonus if they finish homework or housework. 
 
 ## **Part 4: Limitations**
- 1. Only standard library is allowed. Thus the system maybe not very powerful. 
+ 1. Only standard library is allowed. Thus the system may not be very powerful. 
  2. As year 1 students, we only have limited knowledge. However, we would try our best to finish it. 
