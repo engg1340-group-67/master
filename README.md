@@ -23,8 +23,7 @@
   You can follow our commands to show graphs and patterns
   - e.g
    - You can type "mypatterns" to get use of our deep learning algorithms for getting their predicted patterns. So, you can decide the next few days better in financially speaking.
-### **Where users can get help with your project**
-...
+
 ### **Who maintains and contributes to the project**
 1. Yam Chak Fung Wesley
 2. Chu Wai Kit
