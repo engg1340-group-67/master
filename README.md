@@ -1,12 +1,20 @@
 # **Group 67**
 ## **Part 1: Aims of project**
 ### **Background of this project**
- People nowadays often fail to plan on their own financial status.  It indeed undermines many aftermaths in various aspects, say interpersonal relationship within family and qualiy of life. It is pravalent to see people are broke due to some reasons in newspaper, like uncontrolled leisure expenditure. 
- Undenibly, managing financial status is an essential skill for all of us. Recently many researches have shown the benefit of managing and planing since early stage. In light of this, we would like to develop an accounting system to help parents to inculcate their kids the concept of currency as well as helping teens to develop an useful habit.
- This system provides a spectrum of user-friendly features to view, manage and track their kids' financial status. Thus, student can learn to plan better. As a result , we can promote a good econ-planning mindset to our next generation in a long term, contributing to the society. 
+   People nowadays often fail to plan on their own financial status.  It indeed undermines many aftermaths in various aspects, say interpersonal relationship within family and qualiy of life. It is pravalent to see people are broke due to some reasons in newspaper, like uncontrolled leisure expenditure. 
+ 
+  Undenibly, managing financial status is an essential skill for all of us. Recently many researches have shown the benefit of managing and planing since early stage. In light of this, we would like to develop an accounting system to help parents to inculcate their kids the concept of currency as well as helping teens to develop an useful habit.
+ 
+  This system provides a spectrum of user-friendly features to view, manage and track their kids' financial status. Thus, student can learn to plan better. As a result , we can promote a good econ-planning mindset to our next generation in a long term, contributing to the society. 
  
 ### **Why the project is useful**  
- In the Account system, basic functions will be included. Add/delete/modify the data and generating report for parents and kids to track their financial status. Children and parents can view financial status conveniently. It is more efficient and precies through digital tools. Also, good-planning for very important. "If you fail to plan, you plan to fail". There will be statics and pattern-prediction return back to the Users. Eventually, they can get our quality analysis in order to understand their financial status and patterns well in recitfying their normal financial behaviour. Moreover, security for this system is very important part since financial status is very sensitive personal information. We would like to have high enough security level. Last but not least, interactivity between kids and parent is also crucial. Parents can reward their kids throught the app. Thus parents can educate their children how to manage their pocket money. While kids can learn the concept of currency at the early stage. 
+ In the Account system, basic functions will be included. Add/delete/modify the data and generating report for parents and kids to track their financial status. Children and parents can view financial status conveniently. It is more efficient and precies through digital tools.
+ 
+ Also, good-planning for very important. "If you fail to plan, you plan to fail". There will be statics and pattern-prediction return back to the Users. Eventually, they can get our quality analysis in order to understand their financial status and patterns well in recitfying their normal financial behaviour.
+ 
+ Moreover, security for this system is very important part since financial status is very sensitive personal information. We would like to have high enough security level.
+ 
+ Ultimately, interact within kids and parent is crucial, hence we would like that parents can reward their kids throught the app. Thus parents can educate their children how to manage their pocket money, while kids can learn the concept of currency at the early stage. 
 
 ### **How users can get started with the project**
   You can start with input your daily information
