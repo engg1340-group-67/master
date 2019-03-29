@@ -61,7 +61,7 @@ In-code documentation*
     - Users can set alarm as the maximum of their spenditure monthly.
     - Alarm music will be installed
 ## **Part 3: Additional feature**
-  1. security
+  1. Security
     - using cipher transposition
     - login system with checking 
        - eg. absence check, format check ( for email, xxx@xxx.com), more-secured password (Case sensitvie, special characters and number mixing alpabet)
