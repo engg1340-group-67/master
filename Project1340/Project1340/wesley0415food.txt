@@ -1,0 +1,4 @@
+Name	no	price
+1	2	30
+2	4	40
+total food 70

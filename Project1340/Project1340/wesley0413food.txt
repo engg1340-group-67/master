@@ -1,0 +1,4 @@
+	Name	Number	Price
+Total food 0
+1	1	1	1
+Total food 1

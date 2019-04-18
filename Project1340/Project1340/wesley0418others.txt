@@ -1,0 +1,3 @@
+	Name	Number	Price
+1
+Total others 0

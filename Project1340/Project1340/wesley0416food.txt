@@ -1,0 +1,4 @@
+	Name	Number	Price
+1	apple	5	20
+2	orange	6	30
+Total food 50
