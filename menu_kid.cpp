@@ -3,6 +3,8 @@
 #include "sort.h"
 #include "add.h"
 #include "predict.h"
+#include "dl.h"
+#include "tasks_kids.h"
 #include<iostream>
 #include<fstream>
 #include<iomanip>
@@ -16,59 +18,66 @@ void no_of_tasks();
 void create_task();
 //string username;
 int menu_main(string name)
-{	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+{
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	string Filename;
 	string Date;
 	char ch;
-	cout.setf(ios::fixed|ios::showpoint);
-	cout<<setprecision(2); // program outputs decimal number to two decimal places
-	our_group();
+	cout.setf(ios::fixed | ios::showpoint);
+	cout << setprecision(2); // program outputs decimal number to two decimal places
 	create_task();
 	//cout << username;
 	do
-	{	
+	{
 		system("cls");
-		cout<<"\n\n\n\tMAIN MENU";
-		cout<<"\n\n\t01. EDIT YOUR WALLET";
-	  cout<<"\n\n\t02. REPORT";
-		cout<<"\n\n\t03. SEARCH";
-		cout<<"\n\n\t04. TASKS";
+		cout << "\n\n\n\tMAIN MENU";
+		cout << "\n\n\t01. EDIT YOUR WALLET";
+		cout << "\n\n\t02. REPORT";
+		cout << "\n\n\t03. SEARCH";
+		cout << "\n\n\t04. TASKS";
 		no_of_tasks();
 		cout << "\n\n\t05. SORT";
 		cout << "\n\n\t06. INITIALIZE";
-		cout<<"\n\n\t00. EXIT";
-		cout<<"\n\n\tPlease Select Your Option (0-6) ";
-		cin>>ch;
-		switch(ch)
+		cout << "\n\n\t07. Deep Learning";
+		cout << "\n\n\t00. EXIT";
+		cout << "\n\n\tPlease Select Your Option (0-6) ";
+		cin >> ch;
+		switch (ch)
 		{
-			case '1':
-				cout << "\n\n\t MMDD(0101)";
-				cout << "DATE :"; cin >> Date;
-				edit_menu_main(name,Date);
-				break;
-			case '2':
-				cout << "\n\n\t MMDD(0101)";
-				cout << "DATE :"; cin >> Date;
-				predict_main(name, Date);
-				break;
-			case '3':
-				search(name);
-				break;
-			case '4':
-				break;
-			case '5':
-				cout << "\n\n\t MMDD(0101)";
-				cout << "DATE :"; cin >> Date;
-				sort(name,Date);
-				break;
-			case '6':
-				cout << "\n\n\t MMDD(0101)";
-				cout << "DATE :"; cin >> Date;
-				Filename = name+Date;
-				initialization(Filename);
-			default :cout<<"\a";
+		case '1':
+			cout << "\n\n\t MMDD(0101)";
+			cout << "DATE :"; cin >> Date;
+			edit_menu_main(name, Date);
+			break;
+		case '2':
+			cout << "\n\n\t MMDD(0101)";
+			cout << "DATE :"; cin >> Date;
+			predict_main(name, Date);
+			break;
+		case '3':
+			search(name);
+			break;
+		case '4':
+			kids_task_main();
+			break;
+		case '5':
+			cout << "\n\n\t MMDD(0101)";
+			cout << "DATE :"; cin >> Date;
+			sort(name, Date);
+			break;
+		case '6':
+			cout << "\n\n\t MMDD(0101)";
+			cout << "DATE :"; cin >> Date;
+			Filename = name + Date;
+			initialization(Filename);
+			break;
+		case '7':
+			system("cls");
+			deep_learning_main(name);
+			break;
+		default:cout << "\a";
 		}
-    }while(ch!='0');
+	} while (ch != '0');
 	return 0;
 }
 

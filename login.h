@@ -18,13 +18,12 @@
 #define getch() _getch()
 #endif
 using namespace std;
-string password, password_check, username;
-bool user_check(string& usrname_return);
+bool user_check(string &username);
 void sign_up();
 void forget();
 bool email_valid(string email);
 bool fileExists(string fileName);
-string setPass(bool show_asterisk);
+string setPass();
 void headers();
-bool pwd_valid();
-string login_main();
+bool pwd_valid(string password);
+void login_main(string &username);
