@@ -22,10 +22,10 @@ int print_filetext(string filename,int mode) {
 	}
 	else {
 		while (getline(fread, line)) {
-			if (mode == 1){
-			cout << line << endl;
-			length++;
+			if (mode == 1) {
+				cout << line << endl;
 			}
+			length++;
 		}
 	}
 	fread.close();
