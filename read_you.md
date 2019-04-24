@@ -19,7 +19,9 @@ In this part, problem statement and problem setting is shown.
 ## **Part 2: Functionalities and features**
   In this part, four main features - basic financial managment, prediction/report, login function, task trigger - will be discussed in detail one by one. 
 ### **1. Basic Financial Managment**
-
+There are 4 options here. They are Login, Register, Forget and Exit. 
+#### Login
+Users first input username and then password. 
 ### **2. Prediction/Report**
 
 ### **3. Login Function**
