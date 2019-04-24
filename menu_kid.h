@@ -3,6 +3,8 @@
 #include "search.h"
 #include "sort.h"
 #include "add.h"
+#include "dl.h"
+#include "tasks_trigger.h" 
 #include<iostream>
 #include<fstream>
 #include<iomanip>
