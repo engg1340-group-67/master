@@ -14,12 +14,15 @@ This part focuses on problem statement and problem setting.
   In short, this system provides a spectrum of user-friendly, safe and efficient features to view, manage and track their kids' financial status. Thus, student can learn to plan better. As a result , we can promote a good econ-planning mindset to our next generation in a long term, contributing to the society. 
  
 ### **2. Problem setting**
-???
-  
+1. How to make a user friendly environment for add/delete/edit for different day?
+2. How to create a quit search and sort for our customers?
+3. How to give our customers the best report and prediction for their future?
+4. How to make an interation between parents and children?
+5. If a family has 3 childrens, how can we make a report to them seperately?
 ## **Part 2: Functionalities and features**
   In this part, four main features - basic financial managment, prediction/report, login function, task trigger - will be discussed in detail one by one. 
 ### **1. Basic Financial Managment**
-   ### First
+   ### 1.1
    Foremost, we allow kids to input, delete and edit their datas.
    They need to go section *1* and enter the the date to do edition.
    They can choose the options freely.
@@ -39,16 +42,16 @@ This part focuses on problem statement and problem setting.
   They can choose the line that they want to modify after entering a valid date.
   They need to re-enter the data and we will calculate the sum again and write to to username_date_scope.txt
   In a nutshell, our manupilation of data is very user-friendly. Also, there is a short report for each date and each scope counting the number of items, price and name. To obtain with such an option, the only annoying way is to initialize the data but in-return, we will give you the best document.
-  ### Second - search
+  ### 1.2 - search
   We allow user to search their files by entering their dates. Then, they can choose to read speific file or all files. That can provide flexibilty and quite accessibilty to what you did in which day and which scope respectively.
   
-  ### Third - sort
+  ### 1.3 - sort
   We allow user to sort their data in each scope and day. There are acesending and descending order in "alphabetical orders of name, numerical orders of price and number of items". Therefore, it provides a good search view for user to find their datas instantly. It is super user-friendly.
   
-  ### Forth - setTasks
+  ### 1.4 - setTasks
    Kids need to choose which tasks they've done and the pocket moeny will instantly store to the username_date_gain.txt. Then, they can ask their parents to gain their money after they finish the task.
       
-  ### Fifth - Deep Learning
+  ### 1.5 - Deep Learning
    Here, users need to input the 2 dates, which is a duration. Then, our system will train the file within that period to optimize the best paramters for prediction. We allow the user to choose their only learning rate, of course, we have given the suggestion on learning rate. Then, the accuracy and prediction of the next dates will be given.
    User should frequently use this area to help training the data :) . The more they train, the more accurate the model is. So, in this way, we encouage them to use our apps frequently.
    Here, we use backward-propagation. The layers are as following, which are typical.
@@ -57,9 +60,9 @@ This part focuses on problem statement and problem setting.
    Our default learning rate is 0.05 which can correctly predict the price within $100 per day.
    If the user can input all the scopes per day, the accuarcy can be enhanced.
    It is used for the long term-prediction
-### Sixth - Report
-   We will generate a daily report, and the function will be dicussed below.
-###Skilled fulfilled
+### 1.6 Report
+   We will generate a daily report of specific date. The customers can also read their previous report in file. The function will be dicussed below.
+### Skilled fulfilled
    ● Dynamic memory management(vector,link-list,array,class,struct)
    ● File input/output(file in and out of the data)
    ● Data manipulation such as sorting, searching, adding/editing/deleting data records(merge sort, selection sort, adding appending,delete edit)
@@ -71,6 +74,8 @@ This part focuses on problem statement and problem setting.
       
 ### **3. Login Function**
 As we mentioned, financial status is sensitive personal information. A secured login system to prevent unwanted users to access is essential. There are 4 options here. They are Login, Register, Forget and Exit repectively.  
+#### Multi-users
+We do support multi-users, so if a family of 3 childrens, they can share the same computer but their documents will be sorted.
 #### Login
 User first input username. If the username does not exist, a alert will pop out and user have to input again. And then user input the password. There are only 5 chances input the right password considering the bot attack. After 5 times, the program will be terminated.  Once the user input the username and corresponding password correctly, it shows "Welcome" and enters the main menu.
 
