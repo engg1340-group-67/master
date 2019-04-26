@@ -3,13 +3,13 @@ Group 67
 1. Yam Chak Fung Wesley
 2. Chu Wai Kit
 ## **Part 1: Overview**
-In this part, problem statement and problem setting is shown. 
+This part focuses on problem statement and problem setting. 
 ### **1. Problem statement**
-   People nowadays often fail to plan on their own financial status. It indeed undermines many aftermaths in various aspects, say interpersonal relationship within family and qualiy of life. It is pravalent to see people are broke due to some reasons in newspaper, like uncontrolled leisure expenditure. 
+   People nowadays often fail to plan on their own financial status. It creates many aftermaths in various aspects, say interpersonal relationship and qualiy of life. Todate, it is commmon to see brankruptcy due to some reasons, like overconsumption on leisurement.
  
-  Undenibly, managing financial status is an essential skill for all of us. Recently many researches have shown the benefit of managing and planing since early stage. In light of this, we would like to develop an accounting system to help parents to inculcate their kids the concept of currency as well as helping teens to develop an useful habit.
+  Undenibly, managing financial status is an essential skill for all of us. Recently many researches have shown the benefit of managing and planning since early stage. In light of this, we would like to develop an accounting system to help parents to inculcate their kids the concept of currency as well as helping teens to develop an useful habit.
   
-  To achieve this, we have four main features to facilitate the use of the systems. They are basic financial managment, prediction/report, login function, task trigger. These will be discussed in the following section. 
+  To achieve this, we have four main features to facilitate the use of the systems. They are basic financial managment, prediction/report, login function, task trigger. These will be discussed in the following sections. 
  
   In short, this system provides a spectrum of user-friendly, safe and efficient features to view, manage and track their kids' financial status. Thus, student can learn to plan better. As a result , we can promote a good econ-planning mindset to our next generation in a long term, contributing to the society. 
  
@@ -19,7 +19,49 @@ In this part, problem statement and problem setting is shown.
 ## **Part 2: Functionalities and features**
   In this part, four main features - basic financial managment, prediction/report, login function, task trigger - will be discussed in detail one by one. 
 ### **1. Basic Financial Managment**
-
+   ### First
+   Foremost, we allow kids to input, delete and edit their datas.
+   They need to go section *1* and enter the the date to do edition.
+   They can choose the options freely.
+   They will be quited if the data doesn't exist.
+   ### Important- what is date doesn't exist
+      They need to go back the menu and go to **initialization** to create the date
+   ### Insert
+      There are 7 options and they can input their values repectively.
+      They need to enter number of items that they need to input.
+      Then enter the items' name, number of items, price of that.
+      If the number of items is bigger than 10 or price is lager than 100, double validation is needed.
+   ### Remove
+      They can choose the line they don't want after entering a valid date.
+      They can enter many "error line" and pressed -1 as to leave.
+      We will then count the removed price and re-calculate the sum of that scope. A new sum will be shown in the username_date_scope.txt file.
+   ### Edit
+      They can choose the line that they want to modify after entering a valid date.
+      They need to re-enter the data and we will calculate the sum again and write to to username_date_scope.txt
+  In a nutshell, our manupilation of data is very user-friendly. Also, there is a short report for each date and each scope counting the number of items, price and name. To obtain with such an option, the only annoying way is to initialize the data but in-return, we will give you the best document.
+  
+  
+  
+  ### Second - search
+      We allow user to search their files by entering their dates. Then, they can choose to read speific file or all files. That can provide flexibilty and quite accessibilty to what you did in which day and which scope respectively.
+  
+  ### Third - sort
+      We allow user to sort their data in each scope and day. There are acesending and descending order in "alphabetical orders of name, numerical orders of price and number of items". Therefore, it provides a good search view for user to find their datas instantly. It is super user-friendly.
+  
+  ### Forth - setTasks
+      Kids need to choose which tasks they've done and the pocket moeny will instantly store to the username_date_gain.txt. Then, they can ask their parents to gain their money after they finish the task.
+      
+  ### Fifth - Deep Learning
+      Here, users need to input the 2 dates, which is a duration. Then, our system will train the file within that period to optimize the best paramters for prediction. We allow the user to choose their only learning rate, of course, we have given the suggestion on learning rate. Then, the accuracy and prediction of the next dates will be given.
+      User should frequently use this area to help training the data :) . The more they train, the more accurate the model is. So, in this way, we encouage them to use our apps frequently.
+      Here, we use backward-propagation. The layers are as following, which are typical.
+      Affine1(fully connected)->ReLu->Affine2(fully connected)->softmax->entrophy loss
+      Then do it backwardly.
+      Our default learning rate is 0.05 which can correctly predict the price within $100 per day.
+      If the user can input all the scopes per day, the accuarcy can be enhanced.
+      It is used for the long term-prediction
+### Sixth - Report
+      We will generate a daily report, and the function will be dicussed below.
 ### **2. Prediction/Report**
 
 ### **3. Login Function**
