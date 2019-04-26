@@ -10,14 +10,16 @@
 
 using namespace std;
 int edit_menu_main(string name,string Date) {
-	system("cls");
 	int options;
 	while (1) {
-		cout << "Name: " << name << endl;
-		cout << "0: leave" << endl;
-		cout << "1: add" << endl;
-		cout << "2: delete" << endl;
-		cout << "3: edit" << endl;
+		system("cls"); //cout << "\033[2J\033[1;1H";
+		cout << "\nDATE (MMDD) : " << Date<<endl;
+		cout << "\n\n\tEDIT YOUR WALLET " <<endl;
+		cout << "\n\n\t01: Insert" << endl;
+		cout << "\n\n\t02: Remove" << endl;
+		cout << "\n\n\t03: Edit" << endl;
+		cout << "\n\n\t00: Back to main memu" << endl;
+		cout << "\n\n\tPlease Select Your Option (0-3) : ";
 		cin >> options;
 		if (options == 1) {
 			add_main(Date, name);

@@ -2,10 +2,9 @@
 #include <string>
 #include <sstream>
 #include <fstream>
-#include <array>
 #include "delete.h"
 #include "add.h"
-#include <limits> 
+#include <limits>
 using namespace std;
 void swap(int &a, int &b)
 {
@@ -17,13 +16,12 @@ void swap(int &a, int &b)
 
 data_template sort_by_name(data_template data, int size) {
 	data_template new_data(size);
-	//greet 
-	system("cls");
+	//greet
 	int mode = 0;
-	cout << "sort by name" << endl;
-	cout << "***1->Ascending Order***" << endl;
-	cout << "***2->Descending Order***" << endl;
-	cout << "Mode :" << endl;
+	cout << "Sort by name\n" << endl;
+	cout << "\n1->Ascending Order" << endl;
+	cout << "2->Descending Order" << endl;
+	cout << "Mode (1/2) : " ;
 	cin >> mode;
 	cout << endl;
 	int* save = new int[size];
@@ -72,12 +70,8 @@ data_template sort_by_name(data_template data, int size) {
 			swap(save[i], save[idx]);
 		}
 	}
-	cout << "save list" << endl;
-	for (int i = 0; i < size; i++) {
-		cout << save[i] << endl;
-	}
-	//test
-	
+	///test
+	system("cls"); //cout << "\033[2J\033[1;1H";
 	for (int i = 0; i < size; i++) {
 		save_to_data = save[i];
 		new_data.name[i] = data.name[save_to_data];
@@ -89,12 +83,12 @@ data_template sort_by_name(data_template data, int size) {
 }
 data_template sort_by_num(data_template data, int size) {
 	//greet
-	system("cls");
-	cout << "Sort by item" << endl;
+	system("cls"); //cout << "\033[2J\033[1;1H";
+	cout << "Sort by item\n" << endl;
 	int mode = 0;
-	cout << "***1 Ascending Order***" << endl;
-	cout << "***2 Descending Order***" << endl;
-	cout << "Mode :";
+	cout << "\n1->Ascending Order" << endl;
+	cout << "2->Descending Order" << endl;
+	cout << "Mode (1/2) : ";
 	cin >> mode;
 	cout << endl;
 
@@ -147,15 +141,15 @@ data_template sort_by_num(data_template data, int size) {
 }
 data_template sort_by_price(data_template data, int size) {
 	//greet
-	system("cls");
-	cout << "Sort by price" << endl;
+	system("cls"); //cout << "\033[2J\033[1;1H";
+	cout << "Sort by price\n" << endl;
 	int mode = 0;
-	cout << "***1 Ascending Order***" << endl;
-	cout << "***2 Descending Order***" << endl;
-	cout << "Mode :";
+	cout << "\n1->Ascending Order" << endl;
+	cout << "2->Descending Order" << endl;
+	cout << "Mode (1/2) : ";
 	cin >> mode;
 	cout << endl;
-	
+
 
 	data_template new_data(size);
 	int* save = new int[size];
@@ -204,20 +198,23 @@ data_template sort_by_price(data_template data, int size) {
 	return new_data;
 }
 void sortmenu() {
-	cout << "1. food" << endl;
-	cout << "2. transportation" << endl;
-	cout << "3. toy" << endl;
-	cout << "4. stationary" << endl;
-	cout << "5. others" << endl;
-	cout << "6. gain" << endl;
+	cout << "\n\n\n\tSort" << endl;
+	cout << "\n\t01. Food" << endl;
+	cout << "\n\t02. Transportation" << endl;
+	cout << "\n\t03. Toy" << endl;
+	cout << "\n\t04. Stationary" << endl;
+	cout << "\n\t05. Others" << endl;
+	cout << "\n\t06. Income" << endl;
+	cout << "\n\t00. Back to Main Menu";
+	cout << "\n\n\tPlease Select Your Option (0-6) ? ";
 }
 int sort(string name, string date) {
-	system("cls");
+	system("cls"); //cout << "\033[2J\033[1;1H";
 	int scope = 0;
 	string line;
 	string confirm;
-	string addmenu[] = { "food","transportation","toy","stationary","others","gains" };
-	string str[] = { "food.txt","transportation.txt","toy.txt","stationary.txt","others.txt","gains.txt" };
+	string addmenu[] = { "food","transportation","toy","stationary","others","income" };
+	string str[] = { "food.txt","transportation.txt","toy.txt","stationary.txt","others.txt","income.txt" };
 	double sum = 0;
 	int mode = 0;
 	int iterator= 0;
@@ -240,12 +237,11 @@ int sort(string name, string date) {
 	fc.close();
 	filesize = print_filetext(filename,1);
 	int length_of_text = length_check(filename);
-	cout << "length of test " << filesize << endl;
 	data_template data(filesize);
 	data_template new_data(filesize);
 	ifstream fread(filename.c_str());
 	if(fread.fail()){
-		cout << "error no such a date" << endl;
+		cout << "Error no such a date" << endl;
 		return 0;
 	}
 	getline(fread, line);
@@ -261,9 +257,10 @@ int sort(string name, string date) {
 		}
 	}
 	fread.close();
-	cout << "***1 -> Sort by name***" << endl;
-	cout << "***2 -> Sort by number of item***" << endl;
-	cout << "***3 -> Sort by number of price***" << endl;
+	cout << "01 -> Sort by name" << endl;
+	cout << "02 -> Sort by number of item" << endl;
+	cout << "03 -> Sort by number of price" << endl;
+	cout << "\nPlease enter your choice : ";
 	cin >> mode;
 	if (iterator == 1) {
 		return 0;
@@ -279,23 +276,26 @@ int sort(string name, string date) {
 		new_data = sort_by_price(data, iterator);
 	}
 	//file make and print
-	cout << "Updataed Version" << endl;
+	cout << "Updataed Version" << endl << endl;
 	string* passage = new string[filesize+1];
-	passage[0] = "\tName\tno\tprice";
+	passage[0] = "\tName\tNo\tPrice";
 	cout << passage[0] << endl;
 	for (int i = 1; i < filesize; i++) {
 		passage[i] = to_string(i) + "\t" + new_data.name[i-1] + "\t" + to_string(new_data.no[i-1]) + "\t" + to_string(new_data.price[i - 1]) ;
 		sum += new_data.price[i-1];
 		cout << passage[i] << endl;
+		cout << endl;
 	}
-	
+
 	passage[filesize] = "total " + addmenu[scope-1] + " "  + to_string(sum);
 	cout << passage[filesize] << endl;
+	cout << endl;
 	//greet
-	cout << "Update it (Y/N) ??";
+	
+	cout << "Update it (y/n) ??";
 	cin >> confirm;
 	cout << endl;
-	if (confirm == "Y") {
+	if (confirm == "y") {
 		ofstream fwrite(filename.c_str());
 		if (fwrite.fail()) {
 			cout << "error" << endl;

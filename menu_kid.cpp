@@ -3,6 +3,8 @@
 #include "sort.h"
 #include "add.h"
 #include "predict.h"
+#include "dl.h"
+#include "tasks_trigger.h"
 #include<iostream>
 #include<fstream>
 #include<iomanip>
@@ -12,63 +14,73 @@
 using namespace std;
 
 void our_group();
-void no_of_tasks();
+void no_of_tasks(string name);
 void create_task();
 //string username;
 int menu_main(string name)
-{	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+{	
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	double acc = 0;
 	string Filename;
 	string Date;
 	char ch;
-	cout.setf(ios::fixed|ios::showpoint);
-	cout<<setprecision(2); // program outputs decimal number to two decimal places
-	our_group();
+	cout.setf(ios::fixed | ios::showpoint);
+	cout << setprecision(2); // program outputs decimal number to two decimal places
 	create_task();
 	//cout << username;
 	do
-	{	
-		system("cls");
-		cout<<"\n\n\n\tMAIN MENU";
-		cout<<"\n\n\t01. EDIT YOUR WALLET";
-	  cout<<"\n\n\t02. REPORT";
-		cout<<"\n\n\t03. SEARCH";
-		cout<<"\n\n\t04. TASKS";
-		no_of_tasks();
+	{
+		system("cls"); //cout << "\033[2J\033[1;1H";
+		cout << "\n\n\n\tName: " << name << endl;
+		cout << "\n\n\t01. EDIT YOUR WALLET";
+		cout << "\n\n\t02. REPORT";
+		cout << "\n\n\t03. SEARCH";
+		cout << "\n\n\t04. TASKS";
+		no_of_tasks(name);
 		cout << "\n\n\t05. SORT";
 		cout << "\n\n\t06. INITIALIZE";
-		cout<<"\n\n\t00. EXIT";
-		cout<<"\n\n\tPlease Select Your Option (0-6) ";
-		cin>>ch;
-		switch(ch)
+		cout << "\n\n\t07. DEEP LEARNING";
+		cout << "\n\n\t00. EXIT";
+		cout << "\n\n\tPlease Select Your Option (0-7) : ";
+		cin >> ch;
+		cout << "\n\n==========================================================\n";
+		switch (ch)
 		{
-			case '1':
-				cout << "\n\n\t MMDD(0101)";
-				cout << "DATE :"; cin >> Date;
-				edit_menu_main(name,Date);
-				break;
-			case '2':
-				cout << "\n\n\t MMDD(0101)";
-				cout << "DATE :"; cin >> Date;
-				predict_main(name, Date);
-				break;
-			case '3':
-				search(name);
-				break;
-			case '4':
-				break;
-			case '5':
-				cout << "\n\n\t MMDD(0101)";
-				cout << "DATE :"; cin >> Date;
-				sort(name,Date);
-				break;
-			case '6':
-				cout << "\n\n\t MMDD(0101)";
-				cout << "DATE :"; cin >> Date;
-				Filename = name+Date;
-				initialization(Filename);
-			default :cout<<"\a";
+		case '1':
+			system("cls"); //cout << "\033[2J\033[1;1H";
+			cout << "\nDATE (MMDD) : "; cin >> Date;
+			edit_menu_main(name, Date);
+			break;
+		case '2':
+			system("cls"); //cout << "\033[2J\033[1;1H";
+			cout << "\nDATE (MMDD) : "; cin >> Date;
+			predict_main(name, Date);
+			break;
+		case '3':
+			search(name);
+			break;
+		case '4':
+			kids_task_main(name);
+			break;
+		case '5':
+			system("cls"); //cout << "\033[2J\033[1;1H";
+			cout << "\nDATE (MMDD) : "; cin >> Date;
+			sort(name, Date);
+			break;
+		case '6':
+			system("cls"); //cout << "\033[2J\033[1;1H";
+			cout << "\nDATE (MMDD) : "; cin >> Date;
+			Filename = name + Date;
+			initialization(Filename);
+			break;
+		case '7':
+			system("cls"); //cout << "\033[2J\033[1;1H";
+			deep_learning_main(name,acc);
+			cout << "Accuracy: " << acc << endl;
+			break;
+		default:cout << "\a";
 		}
-    }while(ch!='0');
+	} while (ch != '0');
 	return 0;
 }
 
@@ -90,16 +102,20 @@ void create_task(){
 	}
 	fout.close();
 }
-void no_of_tasks(){
+void no_of_tasks(string name){
 	int n=0;
-	string line;
-	ifstream fin("task.txt");
+	string line,user_task_file=name+"task.txt";
+	ifstream fin(user_task_file);
 	if (fin.fail()){
 		cout<< " Error in file opening!"<<endl;
 		exit(1);
 	}
-	while( getline(fin,line)){
-		n++;
+	while(getline(fin>>ws,line)){
+		int x;
+		bool y;
+		fin >> x >> y;
+		if (y == false)
+			n++;
 	}
 	if (n >1)
 		cout <<" - "<< n << " tasks waiting you to finish";

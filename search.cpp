@@ -8,29 +8,29 @@ void txt_produce(int mode, string namedate) {
 	string filename;
 	string line;
 	string confirm;
-	string addmenu[] = { "food.txt","transportation.txt","toy.txt","stationary.txt","others.txt","gains.txt" };
+	string addmenu[] = { "food.txt","transportation.txt","toy.txt","stationary.txt","others.txt","income.txt" };
 	if (mode != 7) {
+		cout << "Name : " << namedate.substr(0,namedate.size()-4) << " Date : " << namedate.substr(namedate.size()-4,4)<<endl<< endl;
 		filename = namedate + addmenu[mode - 1];
-		cout << "f" << filename << endl;
 		ifstream fread(filename.c_str());
 		if (fread.fail()) {
 			cout << "error on reading " << filename << endl;
 			fread.close();
+			return ;
 		}
 		while (getline(fread, line)) {
-			cout << line << endl;
+			cout << line << "\n" << endl;
 		}
 		while (1) {
-				cout << "Quit(Y/N): "; cin >> confirm;
-				if (confirm == "Y") {
-					system("cls");
+				cout << "Quit (y/n): "; cin >> confirm;
+				if (confirm == "y") {
+					system("cls"); //cout << "\033[2J\033[1;1H";
 					break;
 				}
-				else if (confirm == "N") {
-
+				else if (confirm == "n") {
 				}
 			}
-				
+
 		fread.close();
 	}
 	else {
@@ -42,17 +42,17 @@ void txt_produce(int mode, string namedate) {
 				fread.close();
 			}
 			while (getline(fread, line)) {
-				cout << line << endl;
+				cout << line << endl << endl;
 			}
 			fread.close();
 			while (1) {
-				cout << "Next file(Y/N): "; cin >> confirm;
-				if (confirm == "Y") {
-					system("cls");
+				cout << "Next file(y/n): "; cin >> confirm;
+				if (confirm == "y") {
+					system("cls"); //cout << "\033[2J\033[1;1H";
 					break;
 				}
-				else if (confirm == "N") {
-					system("cls");
+				else if (confirm == "n") {
+					system("cls"); //cout << "\033[2J\033[1;1H";
 					break_confirm = 1;
 					break;
 				}
@@ -66,22 +66,20 @@ void txt_produce(int mode, string namedate) {
 int search(string name) {
 	string Date;
 	int scope = 0;
-	cout << "***\tSearch\t***  " << endl;
-	cout << "Date: ";
-	cin >> Date;
-	cout << endl;
-	
-	cout << "***Scope***" << endl;
-	cout << "0. leave" << endl;
-	cout << "1. food" << endl;
-	cout << "2. transportation" << endl;
-	cout << "3. toy" << endl;
-	cout << "4. stationary" << endl;
-	cout << "5. others" << endl;
-	cout << "6. gain" << endl;
-	cout << "7. All" << endl;
-	cout << "Scope: ";
+	system("cls"); //cout << "\033[2J\033[1;1H";
+	cout << "\nDATE (MMDD) : "; cin >> Date;
+	cout << "\n\n\tSearch" << endl;
+	cout << "\n\t01. Food" << endl;
+	cout << "\n\t02. Transportation" << endl;
+	cout << "\n\t03. Toy" << endl;
+	cout << "\n\t04. Stationary" << endl;
+	cout << "\n\t05. Others" << endl;
+	cout << "\n\t06. Income" << endl;
+	cout << "\n\t07. All" << endl;
+	cout << "\n\t00. Back to Main Menu" << endl;
+	cout << "\n\n\tPlease Select Your Option (0-7)  ";
 	cin >> scope;
+	system("cls"); //cout << "\033[2J\033[1;1H";
 	txt_produce(scope,name+Date);
 	return 0;
 }
