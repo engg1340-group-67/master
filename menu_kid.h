@@ -3,6 +3,8 @@
 #include "search.h"
 #include "sort.h"
 #include "add.h"
+#include "dl.h"
+#include "tasks_trigger.h" 
 #include<iostream>
 #include<fstream>
 #include<iomanip>
@@ -14,7 +16,7 @@ using namespace std;
 
 
 void our_group();
-void no_of_tasks();
+void no_of_tasks(string name);
 void create_task();
 //string username;
 int menu_main(std::string name);

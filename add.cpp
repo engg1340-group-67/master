@@ -5,7 +5,7 @@
 #include <string>
 #include <sstream>
 #include <fstream>
-#include <limits> 
+#include <limits>
 using namespace std;
 //***************************************************************
 //    	Used class
@@ -39,7 +39,7 @@ int length_check(string filename) {
 //    	Filetxt creator
 //****************************************************************
 string filetxt(string name, string date, int mode) {
-	string addmenu[] = { "food.txt","transportation.txt","toy.txt","stationary.txt","others.txt","gains.txt" };
+	string addmenu[] = { "food.txt","transportation.txt","toy.txt","stationary.txt","others.txt","income.txt" };
 	string filename = name + date + addmenu[mode - 1];
 	return filename;
 }
@@ -48,7 +48,7 @@ string filetxt(string name, string date, int mode) {
 //****************************************************************
 void initialization(string filename) {
 	string file;
-	string addmenu[] = { "food","transportation","toy","stationary","others","gains" };
+	string addmenu[] = { "food","transportation","toy","stationary","others","income" };
 	for (int i = 0; i < 6; i++) {
 		file = filename + addmenu[i] + ".txt";
 		ofstream fwrite (file.c_str());
@@ -58,12 +58,15 @@ void initialization(string filename) {
 		}
 		fwrite << "\t" << "Name\t" << "Number\t" << "Price" << endl;
 		fwrite << "1" << endl;
-		fwrite << "Total " << addmenu[i] << " 0";
+		fwrite << "Total " << "price " << " 0";//addmenu[i]
 		fwrite.close();
 	}
+	cout << "\n\tInitialized. Press Any Button to continue. ";
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.get();
 }
 //***************************************************************
-//    	Double check 
+//    	Double check
 //****************************************************************
 int double_validation_double(double &num) {
 
@@ -96,23 +99,22 @@ int double_validation_double(double &num) {
 	}
 }
 int double_validation_int(int &num) {
-
 	string confirm;
 	while (1) {
 		if (num >= 10) {
-			cout << "Confirm " << num << "item(Y/N): ";  cin >> confirm;
-			if (confirm == "Y") {
+			cout << "\tConfirm (y/n) : ";  cin >> confirm;
+			if (confirm == "y") {
 				return 0;
 			}
-			else if (confirm == "N") {
-				cout << "Delete size: " << num << "(Y/N): "; cin >> confirm;
+			else if (confirm == "n") {
+				cout << "\tDelete size (y/n) : "; cin >> confirm;
 				cout << endl;
-				if (confirm == "N") {
+				if (confirm == "n") {
 					cout << "Enter a new size: ";      cin >> num;
 					cout << endl;
 					return 0;
 				}
-				else if (confirm == "Y") {
+				else if (confirm == "y") {
 					return 1;
 				}
 			}
@@ -151,7 +153,7 @@ void add_write(int mode, data_template data, string filename, int iter) {
 	string line;
 	string lastline;
 	string key;
-	string addmenu[] = { "food","transportation","toy","stationary","others","gains" };
+	string addmenu[] = { "food","transportation","toy","stationary","others","income" };
 	double previous_sum = 0;
 	double sum = 0;
 	int last_num = 0;
@@ -173,8 +175,8 @@ void add_write(int mode, data_template data, string filename, int iter) {
 			break;
 		}
 	}
-	
-	
+
+
 	myFile.seekg(-i + 1, std::ios::end);
 	getline(myFile, line);
 	//cout << "line" << line << endl;
@@ -242,10 +244,10 @@ void add(int mode, string filename) {
 	//variable used
 	int size_of_array = 0;
 	int iterator = 0;
-	string addmenu[] = { "food","transportation","toy","stationary","others","gains" };
+	string addmenu[] = { "food","transportation","toy","stationary","others","income" };
 
 	//Heading
-	cout << "Number of data: ";
+	cout << "\n\tNumber of item : ";
 	cin >> size_of_array;
 	cout << endl;
 	while (1) {
@@ -268,24 +270,24 @@ void add(int mode, string filename) {
 
 	//Content
 	while (1) {
-
-		cout << "No." << iterator + 1 << " data of " << addmenu[mode - 1];
+		cout << "\n==========================================================\n";
+		cout << "\n\tNo." << iterator + 1 << " "<<addmenu[mode - 1];
 		cout << endl;
 		cout << endl;
-		cout << "Name: ";
+		cout << "\tName : ";
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		std::getline(cin, data.name[iterator]);
 		cout << endl;
 
-		//no
-		cout << "No of item "; cin >> data.no[iterator];
+		//get number of total number
+		cout << "\tTotal number of " << data.name[iterator]<< " : "; cin >> data.no[iterator];
 		cout << endl;
 		//check input
 		while (1) {
 			if (cin.fail()) {
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-				cout << "Please enter a number" << endl;
+				cout << "\tPlease enter a number" << endl;
 				cout << endl;
 				cin >> data.no[iterator];
 			}
@@ -295,7 +297,7 @@ void add(int mode, string filename) {
 		}
 
 		//price
-		cout << "Price: ";
+		cout << "\tTotal Price : ";
 		cin >> data.price[iterator];
 		cout << endl;
 		//check input
@@ -303,7 +305,7 @@ void add(int mode, string filename) {
 			if (cin.fail()) {
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-				cout << "Please enter a number" << endl;
+				cout << "\tPlease enter a number" << endl;
 				cout << endl;
 				cin >> data.price[iterator];
 			}
@@ -311,7 +313,7 @@ void add(int mode, string filename) {
 				break;
 			}
 		}
-		//check if number >= 100 
+		//check if number >= 100
 		if (!double_validation_int(data.no[iterator]) and !double_validation_double(data.price[iterator])) {
 			iterator++;
 		}
@@ -322,34 +324,32 @@ void add(int mode, string filename) {
 	add_write(mode, data, filename, iterator);
 }
 //***************************************************************
-//    	Print addmenu 
+//    	Print addmenu
 //****************************************************************
 void addmenu() {
-	cout << "0. leave" << endl;
-	cout << "1. food" << endl;
-	cout << "2. transportation" << endl;
-	cout << "3. toy" << endl;
-	cout << "4. stationary" << endl;
-	cout << "5. others" << endl;
-	cout << "6. gain" << endl;
-	cout << "7, re-Initialization" << endl;
+	cout << "\n\t01. Food" << endl;
+	cout << "\n\t02. Transportation" << endl;
+	cout << "\n\t03. Toy" << endl;
+	cout << "\n\t04. Stationary" << endl;
+	cout << "\n\t05. Others" << endl;
+	cout << "\n\t06. Income" << endl;
+	cout << "\n\t07. Re-Initialization" << endl;
+	cout << "\n\t00. Back to Main Menu" << endl;
+	cout << "\n\n\tPlease Select Your Option (0-7)  ";
+
 }
 int add_main(string Date, string Name) {
 	string filename;
-	
 	int mode = 0;
 	do {
 		cout << endl;
-		system("cls");
-		//heading
-		cout << "Date: " << Date << endl;
-		cout << "***\tScope\t***" << endl;
-		
+		system("cls"); //cout << "\033[2J\033[1;1H";
 		//print menu
+		cout << "\n\n\n\tInsert" << endl;
 		addmenu();
-
 		//Scope
-		cout << "Scope: "; cin >> mode; cout << endl;
+		cin >> mode; cout << endl;
+		cout << "\n==========================================================\n";
 		//entering mode
 		while (1) {
 			if (mode > 7 or mode < 0) {
@@ -396,4 +396,3 @@ int add_main(string Date, string Name) {
 	//system("pause");
 	return 0;
 }
-

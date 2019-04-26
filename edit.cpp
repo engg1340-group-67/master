@@ -12,28 +12,27 @@ int edit_main(std::string Date, std::string name) {
 	int scope, problem_line = 0;
 	int length_txt = 0;
 	int problem_array_count = 0;
-	int num = 0;
+	double num = 0;
 	int first_num = 1;//must be initialize at 1
 	double sum = 0;
 	string filename;
 	string line;
-	string addmode[] = { "food","transportation","toy","stationary","others","gains" };
+	string addmode[] = { "food","transportation","toy","stationary","others","income" };
 	//temp
 	string last_line_iter, name_str;
 
 	//major
 	while (1) {
-		system("cls");
-		//menu
+		system("cls"); //cout << "\033[2J\033[1;1H";
+		//edit_menu
+		cout << "\n\n\n\tEdit" << endl;
 		addmenu();
-
 		//scope
-		cout << "Scope: ";
 		cin >> scope;
 		cout << endl;
 		//check scope
-		cout << name + Date;
 		if (scope == 0) {
+			system("cls"); //cout << "\033[2J\033[1;1H";
 			return 0;
 		}
 		else if (scope == 7) {
@@ -57,12 +56,12 @@ int edit_main(std::string Date, std::string name) {
 		int iter = 0;
 
 		//Delete Greeting
-		cout << "Enter -1 to leave" << endl;
+		cout << "Enter 0 to leave" << endl;
 		cout << "Lines with Problem: ";
-		while (problem_line != -1) {
+		while (problem_line != 0) {
 			cin >> problem_line;
 			//handler
-			if (problem_line == -1) {
+			if (problem_line == 0) {
 				break;
 			}
 			//assignment
@@ -76,13 +75,13 @@ int edit_main(std::string Date, std::string name) {
 		}
 		//waiting
 		cout << "Editing" << endl;
-		//reusing iterator 
+		//reusing iterator
 		int size_of_array = iter;
 		iter = 1;
 
 		//----------------------file edit---------------------
 		data_template temp(size_of_array);
-		
+
 
 		for (int i = 0; i < size_of_array; i++) {
 			cout << "Editing Line " << problem[i] << endl;
@@ -121,7 +120,7 @@ int edit_main(std::string Date, std::string name) {
 				}
 			}
 		}
-		//file in 
+		//file in
 		ifstream fread(filename.c_str());
 		if (fread.fail()) {
 			cout << "error on fread in edit file in" << endl;
@@ -138,12 +137,12 @@ int edit_main(std::string Date, std::string name) {
 		//
 		int iter_of__class = 0;
 		while (getline(fread, line)) {
-			
+
 			istringstream iss(line);
-	
+
 
 			//logic check if it is problem line
-	
+
 			if (iter == problem[problem_array_count]) {
 				iss >> num;
 				iss >> name_str;
@@ -177,6 +176,6 @@ int edit_main(std::string Date, std::string name) {
 		//copy it to real file
 		filecopy(filename.c_str());
 	}
-	
+
 	return 0;
 }

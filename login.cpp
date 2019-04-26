@@ -4,209 +4,251 @@
 #include "delete.h"
 #include "sort.h"
 #include "menu_kid.h"
-#include "global.h"
+#include "tasks_trigger.h"
 #include <sstream>
 #include<limits>
 #include <fstream>
-#include <conio.h>
+//#include <conio.h>
 #include <string>
 #include <iostream>
 #include <regex>
 #include<iomanip>
 using namespace std;
-#ifdef _MSC_VER
-#define getch() _getch()
-#endif
-bool show_asterisk = true;
-string password, password_check, username;
-bool user_check(string & usr);
+
+//***************************************************************
+//    	function declaration
+//****************************************************************
+
+bool user_check(string &username);
 void sign_up();
 void forget();
 bool email_valid(string email);
 bool fileExists(string fileName);
-string setPass(bool show_asterisk);
+string setPass();
 void headers();
-bool pwd_valid();
-//void our_group();
-//void result();
-//void entry_menu();
-string login_main();
+bool pwd_valid(string password);
+void login_main(string &username);
+
+
+
+//***************************************************************
+//    	THE MAIN FUNCTION OF PROGRAM
+//****************************************************************
 
 int main() {
-	int phony = 0;
-	string name = login_main();
-	system("cls");
-	phony = menu_main(name);
-	if (!phony){
-		return 0;
-		}
-		return 1;
-}
-
-string login_main(){
-	string usr;
-	char a;
-	bool check= false;
-	do{
-	headers();
-	cin>>a;
-  switch (a) {
-    case '1': check=user_check(usr);
-      break;
-    case '2': sign_up();
-		cout << "\nReturn to menu . . . ";
-		getch();
-      break;
-    case '3': forget();
-		cout << "\nReturn to menu . . . ";
-		getch();
-      break;
-		case '0': break;
-    default:
-      cout << "\a";
-    }
-	}while (a!='0'&& !check);
-	cout << "See you next time!\n";
-	return usr;
-}
-
-bool user_check(string& usr) {
-		string password_check,username_file;
-		//char pass2[5];
-		//int times_login;
-
-    cout<<"enter username: ";
-    cin >> username;
-		username_file=username+".txt";
-		if (fileExists(username_file)){
-			cout<<"enter password: ";
-			password= setPass(show_asterisk);
-
-	    ifstream fin;
-	    fin.open(username_file) ;
-			if( fin.fail() )	{
-		 		cout << "Error opening file";
-		 		exit(1);
-		 	}
-			fin>> password_check;
-			fin.close();
-			if (password_check == password){
-				usr = username;
-				cout << "\nWelcome "<< username<<endl;
-				getch();
-				return true;
-			}else{
-				cout<<"\nInvalid username or password\n";
-				cout << "\nReturn to menu . . . ";
-				getch();
-				return false;
-			}
-
-		}
-		return false;
- }
-
- void sign_up(){
-	 string username_2;
-	 cout<<"Create username: ";
-	 cin >> username_2;
-	 username_2+=".txt";
-	 ofstream fi;
-
-	 while (fileExists(username_2)){
-	   cout << "Username exists. Please enter another one: ";
-	   cin >> username_2;
-	   username_2+=".txt";
-	 }
-	 fi.open(username_2);
-
- 	if( fi.fail() )	{
- 		cout << "Error opening file";
- 		exit(1);
- 	}
-
- 	cout<<"Enter your password: ";
-	password= setPass(show_asterisk);
-	while (!pwd_valid()){
-		cout<<"Invalid password\nEnter your password: ";
-		password= setPass(show_asterisk);
+	string username;
+	string confirm;
+	//our_group();
+	//login_main(username);
+	username = "hello";
+	cout << "\n\n\n\t01. PARENT";
+	cout << "\n\n\t02. KID";
+	cout << "\n\n\tYou are (1/2) : ";
+	cin >> confirm;//default kids, becoz kids love enter string
+	if (confirm == "1") {
+		parents_task_main(username);
 	}
-	cout<<"Enter your password again: ";
-	password_check = setPass(show_asterisk);
-	while (password!=password_check){
-		cout<<"Passwords do not match\nEnter your password: ";
-		password= setPass(show_asterisk);
-		while (!pwd_valid()){
-			cout<<"Passwords do not match\nEnter your password: ";
-			password= setPass(show_asterisk);
-		}
-		cout<<"Enter your password again: ";
-		password_check = setPass(show_asterisk);
+	else {
+		menu_main(username);
 	}
- 	cout << "Thank you\n";
- 	fi<< password;
-	fi.close();
- }
-
-void forget(){
-  string user_email;
-  cout << "Please enter your email address: ";
-  cin >> user_email;
-  cout << (email_valid(user_email) ? "Check your email" : "Invalid email address") << endl;
+	return 0;
 }
 
-bool fileExists(string fileName){
-    ifstream infile(fileName);
-    return infile.good();
-}
+//***************************************************************
+//    	Who we are XD
+//****************************************************************
 
-bool email_valid(string email){
-   const regex pattern ("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
-   return regex_match(email, pattern);
-}
+//refer to void our_group() in edit menu
 
-string setPass(bool show_asterisk = true){
-    const char BACKSPACE = 8;//ASCII code for BACKSPACE Key
-    const char ENTER = 13;//ASCII code for ENTER Key
-    string pass = "";
-    char c = ' ';
-    while ((c = _getch()) != ENTER) {
-        if (c == BACKSPACE)  {
-            if (pass.length() != 0)    {
-                if (show_asterisk)
-                   cout << "\b \b";
-                pass.resize(pass.length() - 1);
-            }
-        }
-        else if (c == 0 || c == 224){
-            _getch();
-            continue;
-        } else{
-            pass.push_back(c);
-            cout << '*';
-        }
-    }
-    cout << endl;
-    return pass;
-}
+//***************************************************************
+//    	Greet
+//****************************************************************
 
-void headers(){
-	system("cls");
+void headers() {
+	cout << "\033[2J\033[1;1H";
 	cout << "     ***************************************" << endl;
 	cout << "     * Welcome to Your Financial Majordomo *" << endl;
 	cout << "     ***************************************" << endl;
-	cout<<"\n\n\tLogin/Register";
-	cout<<"\n\n\t01. Login";
-	cout<<"\n\n\t02. Register";
-	cout<<"\n\n\t03. Forget my usernamne or password";
-	cout<<"\n\n\t00. Exit";
-	cout<<"\n\n\tPlease Select Your Option (0-3) ";
+	cout << "\n\n\tLogin/Register";
+	cout << "\n\n\t01. LOGIN";
+	cout << "\n\n\t02. REGISTER";
+	cout << "\n\n\t03. FORGET USERNAME OR PASSWORD";
+	cout << "\n\n\t00. EXIT";
+	cout << "\n\n\tPlease Select Your Option (0-3) ";
+
+}
+//***************************************************************
+//    	THE Login FUNCTION OF PROGRAM
+//****************************************************************
+
+void login_main(string &username) {
+	char a;
+	bool check = false;
+	do {
+		headers();
+		cin >> a;
+		switch (a) {
+		case '1': check = user_check(username);
+			break;
+		case '2': sign_up();
+			cout << "\n\n\tReturn to menu . . . ";
+			cin.get();
+			break;
+		case '3': forget();
+			cout << "\n\n\tReturn to menu . . . ";
+			cin.get();
+			break;
+		case '0': break;
+		default:
+			cout << "\a";
+		}
+	} while (a != '0' && !check);
+	if (a == '0') {
+		cout << "\n\n==========================================================\n";
+		cout << "\n\tSee you next time!\n\n\t";
+		exit(1);
+	}
 
 }
 
-bool pwd_valid(){
-	if (password.length()<6 || password.length()>20){
+bool user_check(string &username) {
+	string password_check, username_file, password;
+	cout << "\n\n==========================================================\n";
+	cout << "\n\tUsername: ";
+	cin >> username;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	username_file = username + ".txt";
+	if (fileExists(username_file)) {
+		cout << "\n\tPassword: ";
+		password = setPass();
+
+		ifstream fin;
+		fin.open(username_file);
+		if (fin.fail()) {
+			cout << "Error opening file";
+			exit(1);
+		}
+		fin >> password_check;
+		fin.close();
+
+		for (int i = 0; i<5; i++) {
+			if (password_check == password) {
+				cout << "\n==========================================================\n";
+				cout << "\n\tWelcome " << username << endl;
+				cin.get();
+				return true;
+			}
+			else {
+				cout << "\n==========================================================\n";
+				cout << "\n\tInvalid password. Please enter again \n";
+				cout << "\n\tPassword: ";
+				password = setPass();
+
+			}
+		}
+		cout << "\n==========================================================\n";
+		cout << "\nToo many trails. " << endl;
+		cin.get();
 		return false;
-	}else{
+	}
+	else {
+		cout << "\n\n==========================================================\n";
+		cout << "\n\tUser does not exit." << endl;
+		cout << "\nReturn to menu . . . ";
+		cin.get();
+		return false;
+	}
+
+}
+
+void sign_up() {
+	string username_file, password_check, password;
+	cout << "\n\n==========================================================\n";
+	cout << "\n\tCreate username: ";
+	cin >> username_file;
+	username_file += ".txt";
+	ofstream fi;
+
+	for (int i = 0; fileExists(username_file); i++) {
+		if (i == 5) {
+			cout << "\tToo many trails. " << endl;
+			return;
+		}
+		cout << "\n\tUsername exists. Please enter another one: ";
+		cin >> username_file;
+		username_file += ".txt";
+	}
+
+
+	cout << "\n\tEnter your password: ";
+	password = setPass();
+	while (!pwd_valid(password)) {
+		cout << "\tInvalid password. It should be 6 - 20 characters including both letters and numbers. \n\n\tEnter your password: ";
+		password = setPass();
+	}
+	cout << "\tEnter your password again: ";
+	password_check = setPass();
+	cout << "\n==========================================================\n";
+	while (password != password_check) {
+		cout << "\n\tPasswords do not match\n\n\tEnter your password: ";
+		password = setPass();
+		while (!pwd_valid(password)) {
+			cout << "\tInvalid password. It should be 6 - 20 characters including both letters and numbers. \n\n==========================================================\n\n\tEnter your password: ";
+			password = setPass();
+		}
+		cout << "\n\tEnter your password again: ";
+		password_check = setPass();
+		cout << "\n==========================================================\n";
+	}
+	cout << "\tThank you\n";
+	fi.open(username_file);
+	if (fi.fail()) {
+		cout << "Error opening file";
+		exit(1);
+	}
+	fi << password;
+	fi.close();
+}
+
+void forget() {
+	string user_email;
+	cout << "\n==========================================================\n";
+	cout << "\n\tPlease enter your email address: ";
+	cin >> user_email;
+	cout << "\n==========================================================\n\n\t";
+	cout << (email_valid(user_email) ? "Check your email" : "Invalid email address") << endl;
+}
+
+bool fileExists(string fileName) {
+	ifstream infile(fileName);
+	return infile.good();
+}
+
+bool email_valid(string email) {
+	const regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+	return regex_match(email, pattern);
+}
+
+string setPass() {
+
+	string pass = "";
+	string line;
+	char c = ' ';
+	//cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	getline(cin>>ws, line);
+	istringstream iss(line);
+	while (iss >> c) { pass.push_back(c); }
+
+	cout << endl;
+	return pass;
+}
+
+
+bool pwd_valid(string password) {
+	if (password.length()<6 || password.length()>20) {
+		return false;
+	}
+	else {
 		return ((password.find_first_of("0123456789") != string::npos) && (password.find_first_of("abcdefghijklmnopqrstuvwxyz") != string::npos));
-}}
+	}
+}

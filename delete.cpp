@@ -21,11 +21,13 @@ int print_filetext(string filename,int mode) {
 		exit(1);
 	}
 	else {
+		system("cls"); //cout << "\033[2J\033[1;1H";
 		while (getline(fread, line)) {
-			if (mode == 1){
-			cout << line << endl;
-			length++;
+			if (mode == 1) {
+				cout << line << endl;
+				cout << endl;
 			}
+			length++;
 		}
 	}
 	fread.close();
@@ -50,18 +52,16 @@ int delete_main(string Date,string name) {
 
 	//major
 	while (1) {
-		system("cls");
-		
-
-		//menu
+		system("cls"); //cout << "\033[2J\033[1;1H";
+		//delete_menu
+		cout << "\n\n\n\tRemove" << endl;
 		addmenu();
-
 		//scope
-		cout << "Scope: ";
 		cin >> scope;
 		cout << endl;
 		//check scope
-		cout << name + Date;
+		system("cls"); //cout << "\033[2J\033[1;1H";
+		cout << "\n\nName : "<< name << "Date : " << Date<<endl;
 		if (scope == 0) {
 			return 0;
 		}
@@ -80,18 +80,18 @@ int delete_main(string Date,string name) {
 		fc.close();
 		//print filetext
 		length_txt = print_filetext(filename,1);
-		
+
 		//creating array of problem
 		int *problem = new int[length_txt];
 		int iter = 0;
 
 		//Delete Greeting
-		cout << "Enter -1 to leave" << endl;
+		cout << "Enter 0 to leave" << endl;
 		cout << "Lines with Problem: ";
-		while (problem_line != -1) {
+		while (problem_line != 0) {
 			cin >> problem_line;
 			//handler
-			if (problem_line == -1) {
+			if (problem_line == 0) {
 				break;
 			}
 			//assignment
@@ -105,19 +105,19 @@ int delete_main(string Date,string name) {
 		}
 		//waiting
 		cout << "Deleting" << endl;
-		//reusing iterator 
+		//reusing iterator
 		int size_of_array = iter;
 		iter = 1;
-		
 
-		//file in 
+
+		//file in
 		ifstream fread(filename.c_str());
 		if (fread.fail()) {
 			cout << "error on fread in delete file in" << endl;
 			exit(1);
 		}
 		ofstream fwrite("temp.txt");
-		
+
 		//-----------------------file out---------------------
 		//first line
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -130,7 +130,7 @@ int delete_main(string Date,string name) {
 			if (iter != problem[problem_array_count] and iter != length_txt) {
 				iss >> num;
 			}
-	
+
 			//logic check if it is problem line
 			if (iter != problem[problem_array_count] and iter != length_txt) {
 				line.erase(0, to_string(num).size());
@@ -150,7 +150,7 @@ int delete_main(string Date,string name) {
 			//check if the default 1 will be delete or not if no element inside
 			else if (iter == length_txt) {
 				if (length_txt  == size_of_array+1) {
-					
+
 					fwrite << "1" << endl;
 				}
 				//access iss num
