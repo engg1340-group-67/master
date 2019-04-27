@@ -224,20 +224,20 @@ For children mode, there are 7 options. The most important thing is that you nee
 
 **Key concept**
 ------------------------------
-**MMDD**
+##### **MMDD**
 - We want you to give us month and day of specific date.
 - For example :
 - 3rd July is 0703;
 - 20th June is 0620;
 - 12th Nov is 1112. 
-**Report**
+##### **Report**
 - The report consist of two parts - the current date's report and the prediction. First you need to input the date and category you wish to check. 
 - The screen will show the report and a text file is generated for users. 
-**Initialization on main menu**
+##### **Initialization on main menu**
 - menu->6. Initialization
 - Create a new file for specific date
 
-**deep learning inititalization**
+##### **Deep learning inititalization**
 - menu-> 7 Deep learning
 - menu -> 2 report
 - Setting for deep learning
@@ -245,21 +245,21 @@ For children mode, there are 7 options. The most important thing is that you nee
 - Once you do it, there will have a paper forever for controlling
 - Else, no paper to help you
 
-**Re-Initialization on add/delete/edit menu**
+##### **Re-Initialization on add/delete/edit menu**
 - menu->edit->insert/remove/edit-> Re-Initialization
 - To clear all data on specific date
 
-**Sort** 
+##### **Sort** 
 - menu->sort
 - You can Sort here. 
 
-**Edit**
+##### **Edit**
 - menu->edit
 - Kid can insert, delete and edit their expense and income here. 
 - You need to enter the date in form of MMDD (eg. 1st of July -> 0701) first to delcare the specific date you wish to modify. - - Then you can choose Insert, remove or edit. After it, you need to choose the category, then choose the number of different items to input, then the name of the item, number of the item, total price and confirm it.
 - Be reminded that the total price means total sum of that price. 
 
-**Task trigger** 
+##### **Task trigger** 
 - menu->4.Tasks
 - In the main menu, there will be a reminder remind you how many task you have to do. For example, if your parents assign 2 tasks, then it will shown '2 tasks is waiting you'. You can view tasks here and if you have finish, select the line of that task. It will change from 'Doing' to 'Done' instantly. 
 
