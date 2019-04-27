@@ -269,3 +269,4 @@ For children mode, there are 7 options. The most important thing is that you nee
 
 3. Too few data. As deep learning model requires lot of data and time to train. Thus, the predicition is not accurate for now. However,  we do not have a database to collect and save that amounts of data methodically. It is still at a primary stage and we will enhance it in the future. 
 
+4. Linux clear screen **cout << "\003[2J\033[1;1h" << endl;**  seems not working in us
